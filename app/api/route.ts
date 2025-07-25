@@ -1,5 +1,6 @@
 import { generateText } from 'ai';
 import { google } from '@ai-sdk/google';
+import { db } from '@/firebase/admin';
 
 export async function GET(request: Request) {
   return Response.json({ hi: 'Hii' });
@@ -26,6 +27,17 @@ export async function POST(request: Request) {
       Thanks`,
     });
     console.log({ questions });
+    const interview = {
+      userId,
+      role,
+      level,
+      type,
+      techstack,
+      numberOfQuestions,
+      questions,
+      createdAt: new Date(),
+    };
+    await db.collection('interviews').add(interview);
     return Response.json({ success: true });
   } catch (e: any) {
     console.log(e);

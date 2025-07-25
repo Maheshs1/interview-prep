@@ -110,3 +110,12 @@ export const isAuthenticated = async () => {
   return !!user;
 };
 
+export const getInterviewsByUserId = async (userId) => {
+  const interviews = await db
+    .collection('interviews')
+    .where('userId', '==', userId)
+    .orderBy('createdAt', 'desc');
+
+  return interviews;
+};
+

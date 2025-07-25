@@ -21,7 +21,7 @@ const interviews = [{
 
 export default function Home() {
   return (
-    <div className="p-4 space-y-8 lg:p-16 max-w-6xl mx-auto">
+    <>
       <section className="p-4 md:px-12 bg-gradient-to-r max-md:bg-gradient-to-b from-purple-900 to-black lg:my-16 flex mx-auto w-full items-center gap-8 rounded-2xl max-md:flex-col">
         <div className="space-y-2">
           <h2 className="font-bold text-3xl">Take AI-Powered Interviews to Excel</h2>
@@ -65,6 +65,6 @@ export default function Home() {
         <h3 className="font-bold text-2xl">All Interviews</h3>
         <p className="text-gray-500">No Interviews Yet</p>
       </section>
-    </div>
+    </>
   );
 }

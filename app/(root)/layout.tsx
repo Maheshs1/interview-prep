@@ -7,7 +7,9 @@ async function RootLayout({ children }: { children: ReactNode }) {
 
   if (!isUserAuthenticated) redirect('/sign-up');
   return (
-    <div>{children}</div>
+    <div className="p-4 space-y-8 lg:p-16 max-w-6xl mx-auto">
+      {children}
+    </div>
   )
 }
 
