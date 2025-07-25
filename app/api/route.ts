@@ -37,7 +37,12 @@ export async function POST(request: Request) {
       questions,
       createdAt: new Date(),
     };
-    await db.collection('interviews').add(interview);
+    const interviewCollection = await db
+      .collection('interviews')
+      .doc()
+      .set(interview);
+    console.log(interviewCollection.writeTime);
+    // await db.collection('interviews').add(interview);
     return Response.json({ success: true });
   } catch (e: any) {
     console.log(e);
