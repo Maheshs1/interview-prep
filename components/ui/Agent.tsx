@@ -18,7 +18,7 @@ interface SavedMessage {
   content: string;
 }
 const Agent = ({ userId }) => {
-
+  console.log({ userId });
   const router = useRouter();
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
@@ -64,7 +64,12 @@ const Agent = ({ userId }) => {
 
   const handleCallStart = async () => {
     setCallStatus(CallStatus.CONNECTING);
-    await vapi.start(null, null, null, process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!);
+
+    await vapi.start(null, null, null, process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+      variableValues: {
+        userId
+      }
+    });
   }
 
   const handleCallEnd = async () => {
