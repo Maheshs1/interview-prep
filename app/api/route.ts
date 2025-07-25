@@ -37,16 +37,22 @@ export async function POST(request: Request) {
       questions,
       createdAt: new Date(),
     };
+
+    console.log({ interview });
     const interviewCollection = await db
       .collection('interviews')
       .doc()
       .set(interview);
-    console.log(interviewCollection.writeTime);
-    // await db.collection('interviews').add(interview);
-    return Response.json({ success: true });
+    console.log({ writeTime: interviewCollection.writeTime });
+    await db.collection('interviews').add(interview);
+    return Response.json({
+      success: true,
+      interview,
+      writeTime: interviewCollection.writeTime,
+    });
   } catch (e: any) {
     console.log(e);
-    return Response.json({ success: false });
+    return Response.json({ success: false, message: e });
   }
 }
 
