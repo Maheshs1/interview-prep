@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     const interview = {
       userId,
       role,
-      level,
+      // level,
       type,
       techstack,
       numberOfQuestions,

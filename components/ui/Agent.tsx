@@ -57,8 +57,10 @@ const Agent = ({ userId }) => {
   }, []);
 
   useEffect(() => {
+    console.log("Call Finished");
     if (callStatus === CallStatus.FINISHED) {
-      router.push('/');
+
+      router.replace('/');
     }
   }, [callStatus, messages, router])
 
@@ -77,7 +79,7 @@ const Agent = ({ userId }) => {
     await vapi.stop();
   }
 
-  const callInactiveOrFinished = callStatus === CallStatus.INACTIVE || CallStatus.FINISHED;
+  const callInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
   console.log({ callStatus, callInactiveOrFinished })
 
   return (
